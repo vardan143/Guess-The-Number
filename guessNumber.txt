@@ -1,0 +1,46 @@
+import random
+def create(n):
+    return str(random.randint(10**(n-1),(10**n)))
+print('''Its a fun game. The system is the opponent. 
+it generates a N-digited number of your choice and allows you to guess it. 
+if the digit of your number are in the system number but not in the same position as in it ,
+then it increases Orange value by 1. If digit of your number in as same place as in It then it increases the Green number by 1
+This goes on till you guess the correct number .''')
+while True:
+    choice=input("enter your choice -1 to stop or any key to play:")
+    if choice=='-1':
+        break
+    else:
+        r=create(int(input('''enter the size of the number
+Enter 2 for easy level
+Enter 3 for medium level
+Enter 4 or above for Hard level:''')))
+        while True:
+            Green,Orange=0,0
+            guess=input('''enter your number
+        or
+Enter -1 to display the number:''')
+            if guess=='-1':
+                print("You lost. the number is:",r)
+                break
+            elif  guess != r:
+                for i in range(len(guess)):
+                    if guess[i] in r:
+                        if guess[i]==r[i]:
+                            Green+=1
+                            
+                        else:
+                            Orange+=1
+                    else:
+                        continue
+                print("cows= %d:"%(Green))
+                print("bulls= %d"%(Orange))
+            else:
+                print("Congrats............you got it right")
+                print("number is %d"%int((r)))
+                break
+        
+            
+        
+
+    
